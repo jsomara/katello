@@ -41,7 +41,12 @@ A subscription management only version of katello
 %setup -q
 
 %build
-# How to do SASS and JAMMIT at run time.
+
+# pull in katello base filesi
+mkdir -p app/stylesheets/
+cp -r ../../src/app/stylesheets/* app/stylesheets/
+
+# override with headpin files 
 mv src/* .
 rm -rf src
 
@@ -50,6 +55,13 @@ if [ -d branding ] ; then
   cp -r branding/* .
 fi
 
+#compile SASS files
+echo Compiling SASS files...
+compass compile
+
+#generate Rails JS/CSS/... assets
+echo Generating Rails assets...
+jammit --config config/assets.yml -f
 
 %install
 rm -rf %{buildroot}
@@ -109,6 +121,8 @@ and then run katello-configure to configure everything.
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/%{katello_name}/%{katello_name}.yml
 %{homedir}
+%{homedir}/config/assets.yml                                                                                                                                                      
+%{homedir}/public     
 
 %files all
 
