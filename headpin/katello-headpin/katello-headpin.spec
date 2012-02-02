@@ -43,7 +43,7 @@ A subscription management only version of katello
 %build
 
 # override katello base with headpin files 
-mv src/* .
+cp -r src/* .
 rm -rf src
 
 #pull in branding if present
