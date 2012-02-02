@@ -42,11 +42,7 @@ A subscription management only version of katello
 
 %build
 
-# pull in katello base filesi
-mkdir -p app/stylesheets/
-cp -r ../../src/app/stylesheets/* app/stylesheets/
-
-# override with headpin files 
+# override katello base with headpin files 
 mv src/* .
 rm -rf src
 

@@ -21,3 +21,7 @@ do
     fi
 done < $HEADPIN/$CHANGES_FILE
 cd $HEADPIN
+
+# copy katello scss files for stylin it up
+mkdir -p app/stylesheets
+cp -r ../../src/app/stylesheets/* app/stylesheets
