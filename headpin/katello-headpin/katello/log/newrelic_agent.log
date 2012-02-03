@@ -1,0 +1,325 @@
+# Logfile created on Tue Jan 17 18:38:54 -0500 2012 by logger.rb/1.2.6
+[01/17/12 18:38:54 -0500 winterfell (17775)] INFO : Dispatcher: thin
+[01/17/12 18:38:54 -0500 winterfell (17775)] INFO : Application: test
+[01/17/12 18:38:54 -0500 winterfell (17775)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/17/12 18:38:54 -0500 winterfell (17775)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 17775
+[01/17/12 18:38:54 -0500 winterfell (17775)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/17/12 18:38:54 -0500 winterfell (17775)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/17/12 18:39:46 -0500 winterfell (17897)] INFO : Dispatcher: thin
+[01/17/12 18:39:46 -0500 winterfell (17897)] INFO : Application: test
+[01/17/12 18:39:46 -0500 winterfell (17897)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/17/12 18:39:46 -0500 winterfell (17897)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 17897
+[01/17/12 18:39:46 -0500 winterfell (17897)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/17/12 18:39:46 -0500 winterfell (17897)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/17/12 18:40:46 -0500 winterfell (18030)] INFO : Dispatcher: thin
+[01/17/12 18:40:46 -0500 winterfell (18030)] INFO : Application: test
+[01/17/12 18:40:46 -0500 winterfell (18030)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/17/12 18:40:46 -0500 winterfell (18030)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 18030
+[01/17/12 18:40:46 -0500 winterfell (18030)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/17/12 18:40:46 -0500 winterfell (18030)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/17/12 18:44:00 -0500 winterfell (18383)] INFO : Dispatcher: thin
+[01/17/12 18:44:00 -0500 winterfell (18383)] INFO : Application: test
+[01/17/12 18:44:00 -0500 winterfell (18383)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/17/12 18:44:00 -0500 winterfell (18383)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 18383
+[01/17/12 18:44:00 -0500 winterfell (18383)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/17/12 18:44:00 -0500 winterfell (18383)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/17/12 18:48:12 -0500 winterfell (18761)] INFO : Dispatcher: thin
+[01/17/12 18:48:12 -0500 winterfell (18761)] INFO : Application: test
+[01/17/12 18:48:12 -0500 winterfell (18761)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/17/12 18:48:12 -0500 winterfell (18761)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 18761
+[01/17/12 18:48:12 -0500 winterfell (18761)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/17/12 18:48:12 -0500 winterfell (18761)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/20/12 14:50:24 -0500 winterfell (10393)] INFO : Dispatcher: thin
+[01/20/12 14:50:24 -0500 winterfell (10393)] INFO : Application: test
+[01/20/12 14:50:24 -0500 winterfell (10393)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/20/12 14:50:24 -0500 winterfell (10393)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 10393
+[01/20/12 14:50:24 -0500 winterfell (10393)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/20/12 14:50:24 -0500 winterfell (10393)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/20/12 15:17:13 -0500 winterfell (12733)] INFO : Dispatcher: thin
+[01/20/12 15:17:13 -0500 winterfell (12733)] INFO : Application: test
+[01/20/12 15:17:13 -0500 winterfell (12733)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/20/12 15:17:13 -0500 winterfell (12733)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 12733
+[01/20/12 15:17:13 -0500 winterfell (12733)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/20/12 15:17:13 -0500 winterfell (12733)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/20/12 15:17:53 -0500 winterfell (12803)] INFO : Dispatcher: thin
+[01/20/12 15:17:53 -0500 winterfell (12803)] INFO : Application: test
+[01/20/12 15:17:53 -0500 winterfell (12803)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/20/12 15:17:53 -0500 winterfell (12803)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 12803
+[01/20/12 15:17:53 -0500 winterfell (12803)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/20/12 15:17:53 -0500 winterfell (12803)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 14:45:02 -0500 unused (29002)] INFO : Dispatcher: thin
+[01/23/12 14:45:02 -0500 unused (29002)] INFO : Application: test
+[01/23/12 14:45:02 -0500 unused (29002)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 14:45:02 -0500 unused (29002)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29002
+[01/23/12 14:45:02 -0500 unused (29002)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 14:45:02 -0500 unused (29002)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:06:00 -0500 unused (31192)] INFO : Dispatcher: thin
+[01/23/12 15:06:00 -0500 unused (31192)] INFO : Application: test
+[01/23/12 15:06:00 -0500 unused (31192)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:06:00 -0500 unused (31192)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 31192
+[01/23/12 15:06:00 -0500 unused (31192)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:06:00 -0500 unused (31192)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:08:32 -0500 unused (31476)] INFO : Dispatcher: thin
+[01/23/12 15:08:32 -0500 unused (31476)] INFO : Application: test
+[01/23/12 15:08:32 -0500 unused (31476)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:08:32 -0500 unused (31476)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 31476
+[01/23/12 15:08:32 -0500 unused (31476)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:08:32 -0500 unused (31476)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:09:38 -0500 unused (31609)] INFO : Dispatcher: thin
+[01/23/12 15:09:38 -0500 unused (31609)] INFO : Application: test
+[01/23/12 15:09:38 -0500 unused (31609)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:09:38 -0500 unused (31609)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 31609
+[01/23/12 15:09:38 -0500 unused (31609)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:09:38 -0500 unused (31609)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:31:55 -0500 unused (33988)] INFO : Dispatcher: thin
+[01/23/12 15:31:55 -0500 unused (33988)] INFO : Application: test
+[01/23/12 15:31:55 -0500 unused (33988)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:31:55 -0500 unused (33988)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 33988
+[01/23/12 15:31:55 -0500 unused (33988)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:31:55 -0500 unused (33988)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:32:56 -0500 unused (34154)] INFO : Dispatcher: thin
+[01/23/12 15:32:56 -0500 unused (34154)] INFO : Application: test
+[01/23/12 15:32:56 -0500 unused (34154)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:32:56 -0500 unused (34154)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 34154
+[01/23/12 15:32:56 -0500 unused (34154)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:32:56 -0500 unused (34154)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:36:23 -0500 unused (34514)] INFO : Dispatcher: thin
+[01/23/12 15:36:23 -0500 unused (34514)] INFO : Application: test
+[01/23/12 15:36:23 -0500 unused (34514)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:36:23 -0500 unused (34514)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 34514
+[01/23/12 15:36:23 -0500 unused (34514)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:36:23 -0500 unused (34514)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:36:49 -0500 unused (34610)] INFO : Dispatcher: thin
+[01/23/12 15:36:49 -0500 unused (34610)] INFO : Application: test
+[01/23/12 15:36:49 -0500 unused (34610)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:36:49 -0500 unused (34610)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 34610
+[01/23/12 15:36:49 -0500 unused (34610)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:36:49 -0500 unused (34610)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:43:52 -0500 unused (35319)] INFO : Dispatcher: thin
+[01/23/12 15:43:52 -0500 unused (35319)] INFO : Application: test
+[01/23/12 15:43:52 -0500 unused (35319)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:43:52 -0500 unused (35319)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 35319
+[01/23/12 15:43:52 -0500 unused (35319)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:43:52 -0500 unused (35319)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:44:58 -0500 unused (35481)] INFO : Dispatcher: thin
+[01/23/12 15:44:58 -0500 unused (35481)] INFO : Application: test
+[01/23/12 15:44:58 -0500 unused (35481)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:44:58 -0500 unused (35481)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 35481
+[01/23/12 15:44:58 -0500 unused (35481)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:44:58 -0500 unused (35481)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:55:54 -0500 unused (36776)] INFO : Dispatcher: thin
+[01/23/12 15:55:54 -0500 unused (36776)] INFO : Application: test
+[01/23/12 15:55:54 -0500 unused (36776)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:55:54 -0500 unused (36776)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 36776
+[01/23/12 15:55:54 -0500 unused (36776)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:55:54 -0500 unused (36776)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 15:56:28 -0500 unused (36870)] INFO : Dispatcher: thin
+[01/23/12 15:56:28 -0500 unused (36870)] INFO : Application: test
+[01/23/12 15:56:28 -0500 unused (36870)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 15:56:28 -0500 unused (36870)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 36870
+[01/23/12 15:56:28 -0500 unused (36870)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 15:56:28 -0500 unused (36870)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:00:07 -0500 unused (37205)] INFO : Dispatcher: thin
+[01/23/12 16:00:07 -0500 unused (37205)] INFO : Application: test
+[01/23/12 16:00:07 -0500 unused (37205)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:00:07 -0500 unused (37205)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 37205
+[01/23/12 16:00:07 -0500 unused (37205)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:00:07 -0500 unused (37205)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:00:44 -0500 unused (37343)] INFO : Dispatcher: thin
+[01/23/12 16:00:44 -0500 unused (37343)] INFO : Application: test
+[01/23/12 16:00:44 -0500 unused (37343)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:00:44 -0500 unused (37343)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 37343
+[01/23/12 16:00:44 -0500 unused (37343)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:00:44 -0500 unused (37343)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:02:21 -0500 unused (37522)] INFO : Dispatcher: thin
+[01/23/12 16:02:21 -0500 unused (37522)] INFO : Application: test
+[01/23/12 16:02:21 -0500 unused (37522)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:02:21 -0500 unused (37522)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 37522
+[01/23/12 16:02:21 -0500 unused (37522)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:02:21 -0500 unused (37522)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:12:16 -0500 unused (38683)] INFO : Dispatcher: thin
+[01/23/12 16:12:16 -0500 unused (38683)] INFO : Application: test
+[01/23/12 16:12:16 -0500 unused (38683)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:12:16 -0500 unused (38683)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 38683
+[01/23/12 16:12:16 -0500 unused (38683)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:12:16 -0500 unused (38683)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:14:44 -0500 unused (38959)] INFO : Dispatcher: thin
+[01/23/12 16:14:44 -0500 unused (38959)] INFO : Application: test
+[01/23/12 16:14:44 -0500 unused (38959)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:14:44 -0500 unused (38959)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 38959
+[01/23/12 16:14:44 -0500 unused (38959)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:14:44 -0500 unused (38959)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:15:58 -0500 unused (39083)] INFO : Dispatcher: thin
+[01/23/12 16:15:58 -0500 unused (39083)] INFO : Application: test
+[01/23/12 16:15:58 -0500 unused (39083)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:15:58 -0500 unused (39083)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 39083
+[01/23/12 16:15:58 -0500 unused (39083)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:15:58 -0500 unused (39083)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:16:49 -0500 unused (39249)] INFO : Dispatcher: thin
+[01/23/12 16:16:49 -0500 unused (39249)] INFO : Application: test
+[01/23/12 16:16:49 -0500 unused (39249)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:16:49 -0500 unused (39249)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 39249
+[01/23/12 16:16:49 -0500 unused (39249)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:16:49 -0500 unused (39249)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:28:34 -0500 unused (40392)] INFO : Dispatcher: thin
+[01/23/12 16:28:34 -0500 unused (40392)] INFO : Application: test
+[01/23/12 16:28:34 -0500 unused (40392)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:28:34 -0500 unused (40392)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 40392
+[01/23/12 16:28:34 -0500 unused (40392)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:28:34 -0500 unused (40392)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/23/12 16:29:23 -0500 unused (40504)] INFO : Dispatcher: thin
+[01/23/12 16:29:23 -0500 unused (40504)] INFO : Application: test
+[01/23/12 16:29:23 -0500 unused (40504)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/23/12 16:29:23 -0500 unused (40504)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 40504
+[01/23/12 16:29:23 -0500 unused (40504)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/23/12 16:29:23 -0500 unused (40504)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:20:16 -0500 unused (24217)] INFO : Dispatcher: thin
+[01/24/12 11:20:16 -0500 unused (24217)] INFO : Application: test
+[01/24/12 11:20:16 -0500 unused (24217)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:20:16 -0500 unused (24217)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 24217
+[01/24/12 11:20:16 -0500 unused (24217)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:20:16 -0500 unused (24217)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:26:39 -0500 unused (24885)] INFO : Dispatcher: thin
+[01/24/12 11:26:39 -0500 unused (24885)] INFO : Application: test
+[01/24/12 11:26:39 -0500 unused (24885)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:26:39 -0500 unused (24885)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 24885
+[01/24/12 11:26:39 -0500 unused (24885)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:26:39 -0500 unused (24885)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:29:42 -0500 unused (25201)] INFO : Dispatcher: thin
+[01/24/12 11:29:42 -0500 unused (25201)] INFO : Application: test
+[01/24/12 11:29:42 -0500 unused (25201)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:29:42 -0500 unused (25201)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 25201
+[01/24/12 11:29:42 -0500 unused (25201)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:29:42 -0500 unused (25201)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:30:51 -0500 unused (25361)] INFO : Dispatcher: thin
+[01/24/12 11:30:51 -0500 unused (25361)] INFO : Application: test
+[01/24/12 11:30:51 -0500 unused (25361)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:30:51 -0500 unused (25361)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 25361
+[01/24/12 11:30:51 -0500 unused (25361)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:30:51 -0500 unused (25361)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:32:51 -0500 unused (25611)] INFO : Dispatcher: thin
+[01/24/12 11:32:51 -0500 unused (25611)] INFO : Application: test
+[01/24/12 11:32:51 -0500 unused (25611)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:32:51 -0500 unused (25611)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 25611
+[01/24/12 11:32:51 -0500 unused (25611)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:32:51 -0500 unused (25611)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:34:00 -0500 unused (25729)] INFO : Dispatcher: thin
+[01/24/12 11:34:00 -0500 unused (25729)] INFO : Application: test
+[01/24/12 11:34:00 -0500 unused (25729)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:34:00 -0500 unused (25729)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 25729
+[01/24/12 11:34:00 -0500 unused (25729)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:34:00 -0500 unused (25729)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:35:02 -0500 unused (25829)] INFO : Dispatcher: thin
+[01/24/12 11:35:02 -0500 unused (25829)] INFO : Application: test
+[01/24/12 11:35:02 -0500 unused (25829)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:35:02 -0500 unused (25829)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 25829
+[01/24/12 11:35:02 -0500 unused (25829)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:35:02 -0500 unused (25829)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:37:20 -0500 unused (26145)] INFO : Dispatcher: thin
+[01/24/12 11:37:20 -0500 unused (26145)] INFO : Application: test
+[01/24/12 11:37:20 -0500 unused (26145)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:37:20 -0500 unused (26145)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 26145
+[01/24/12 11:37:20 -0500 unused (26145)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:37:20 -0500 unused (26145)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:38:53 -0500 unused (26285)] INFO : Dispatcher: thin
+[01/24/12 11:38:53 -0500 unused (26285)] INFO : Application: test
+[01/24/12 11:38:53 -0500 unused (26285)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:38:53 -0500 unused (26285)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 26285
+[01/24/12 11:38:53 -0500 unused (26285)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:38:53 -0500 unused (26285)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:41:04 -0500 unused (26580)] INFO : Dispatcher: thin
+[01/24/12 11:41:04 -0500 unused (26580)] INFO : Application: test
+[01/24/12 11:41:04 -0500 unused (26580)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:41:04 -0500 unused (26580)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 26580
+[01/24/12 11:41:04 -0500 unused (26580)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:41:04 -0500 unused (26580)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:53:27 -0500 unused (27802)] INFO : Dispatcher: thin
+[01/24/12 11:53:27 -0500 unused (27802)] INFO : Application: test
+[01/24/12 11:53:27 -0500 unused (27802)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:53:27 -0500 unused (27802)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 27802
+[01/24/12 11:53:27 -0500 unused (27802)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:53:27 -0500 unused (27802)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:54:17 -0500 unused (27891)] INFO : Dispatcher: thin
+[01/24/12 11:54:17 -0500 unused (27891)] INFO : Application: test
+[01/24/12 11:54:17 -0500 unused (27891)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:54:17 -0500 unused (27891)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 27891
+[01/24/12 11:54:17 -0500 unused (27891)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:54:17 -0500 unused (27891)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:58:04 -0500 unused (28286)] INFO : Dispatcher: thin
+[01/24/12 11:58:04 -0500 unused (28286)] INFO : Application: test
+[01/24/12 11:58:04 -0500 unused (28286)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:58:04 -0500 unused (28286)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 28286
+[01/24/12 11:58:04 -0500 unused (28286)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:58:04 -0500 unused (28286)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 11:59:56 -0500 unused (28450)] INFO : Dispatcher: thin
+[01/24/12 11:59:56 -0500 unused (28450)] INFO : Application: test
+[01/24/12 11:59:56 -0500 unused (28450)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 11:59:56 -0500 unused (28450)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 28450
+[01/24/12 11:59:56 -0500 unused (28450)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 11:59:56 -0500 unused (28450)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:06:48 -0500 unused (29213)] INFO : Dispatcher: thin
+[01/24/12 12:06:48 -0500 unused (29213)] INFO : Application: test
+[01/24/12 12:06:48 -0500 unused (29213)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:06:48 -0500 unused (29213)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29213
+[01/24/12 12:06:48 -0500 unused (29213)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:06:48 -0500 unused (29213)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:07:57 -0500 unused (29336)] INFO : Dispatcher: thin
+[01/24/12 12:07:57 -0500 unused (29336)] INFO : Application: test
+[01/24/12 12:07:57 -0500 unused (29336)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:07:57 -0500 unused (29336)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29336
+[01/24/12 12:07:57 -0500 unused (29336)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:07:57 -0500 unused (29336)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:08:34 -0500 unused (29442)] INFO : Dispatcher: thin
+[01/24/12 12:08:34 -0500 unused (29442)] INFO : Application: test
+[01/24/12 12:08:34 -0500 unused (29442)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:08:34 -0500 unused (29442)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29442
+[01/24/12 12:08:34 -0500 unused (29442)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:08:34 -0500 unused (29442)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:09:05 -0500 unused (29530)] INFO : Dispatcher: thin
+[01/24/12 12:09:05 -0500 unused (29530)] INFO : Application: test
+[01/24/12 12:09:05 -0500 unused (29530)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:09:05 -0500 unused (29530)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29530
+[01/24/12 12:09:05 -0500 unused (29530)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:09:05 -0500 unused (29530)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:10:04 -0500 unused (29632)] INFO : Dispatcher: thin
+[01/24/12 12:10:04 -0500 unused (29632)] INFO : Application: test
+[01/24/12 12:10:04 -0500 unused (29632)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:10:04 -0500 unused (29632)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29632
+[01/24/12 12:10:04 -0500 unused (29632)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:10:04 -0500 unused (29632)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:10:42 -0500 unused (29705)] INFO : Dispatcher: thin
+[01/24/12 12:10:42 -0500 unused (29705)] INFO : Application: test
+[01/24/12 12:10:42 -0500 unused (29705)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:10:42 -0500 unused (29705)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29705
+[01/24/12 12:10:42 -0500 unused (29705)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:10:42 -0500 unused (29705)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:11:09 -0500 unused (29763)] INFO : Dispatcher: thin
+[01/24/12 12:11:09 -0500 unused (29763)] INFO : Application: test
+[01/24/12 12:11:09 -0500 unused (29763)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:11:09 -0500 unused (29763)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29763
+[01/24/12 12:11:09 -0500 unused (29763)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:11:09 -0500 unused (29763)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:11:44 -0500 unused (29829)] INFO : Dispatcher: thin
+[01/24/12 12:11:44 -0500 unused (29829)] INFO : Application: test
+[01/24/12 12:11:44 -0500 unused (29829)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:11:44 -0500 unused (29829)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29829
+[01/24/12 12:11:44 -0500 unused (29829)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:11:44 -0500 unused (29829)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:12:48 -0500 unused (29987)] INFO : Dispatcher: thin
+[01/24/12 12:12:48 -0500 unused (29987)] INFO : Application: test
+[01/24/12 12:12:48 -0500 unused (29987)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:12:48 -0500 unused (29987)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 29987
+[01/24/12 12:12:48 -0500 unused (29987)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:12:48 -0500 unused (29987)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/24/12 12:15:51 -0500 unused (30333)] INFO : Dispatcher: thin
+[01/24/12 12:15:51 -0500 unused (30333)] INFO : Application: test
+[01/24/12 12:15:51 -0500 unused (30333)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/24/12 12:15:51 -0500 unused (30333)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 30333
+[01/24/12 12:15:51 -0500 unused (30333)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/24/12 12:15:51 -0500 unused (30333)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
+[01/25/12 16:37:04 -0500 unused (11813)] INFO : Dispatcher: thin
+[01/25/12 16:37:04 -0500 unused (11813)] INFO : Application: test
+[01/25/12 16:37:04 -0500 unused (11813)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[01/25/12 16:37:04 -0500 unused (11813)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 11813
+[01/25/12 16:37:04 -0500 unused (11813)] INFO : Agent Log at /home/jomara/dev/katello/src/log/newrelic_agent.log
+[01/25/12 16:37:04 -0500 unused (11813)] INFO : NewRelic::Agent::Samplers::DelayedJobLockSampler sampler not available: No DJ worker present
