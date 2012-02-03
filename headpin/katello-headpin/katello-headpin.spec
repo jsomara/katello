@@ -118,7 +118,7 @@ and then run katello-configure to configure everything.
 %config(noreplace) %{_sysconfdir}/%{katello_name}/%{katello_name}.yml
 %{homedir}
 %{homedir}/config/assets.yml                                                                                                                                                      
-%{homedir}/public     
+%{homedir}/public/stylesheets/compiled     
 
 %files all
 
