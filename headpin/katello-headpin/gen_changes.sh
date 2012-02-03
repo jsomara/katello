@@ -22,10 +22,6 @@ do
 done < $HEADPIN/$CHANGES_FILE
 cd $HEADPIN
 
-# copy katello scss files for stylin it up
-mkdir -p app/stylesheets
-cp -r ../../src/app/stylesheets/* app/stylesheets
-cp -r ../../src/public/stylesheets/* src/public/stylesheets
-cp -r ../../src/public/javascripts/* src/public/javascripts
-cp ../../src/config/compass.yml src/config
-cp ../../src/config/assets.yml src/config
+# copy katello over
+mkdir katello
+cp -r ../../src/* katello/

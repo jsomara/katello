@@ -275,22 +275,7 @@ fi
 %files
 %attr(600, katello, katello)
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.yml
-
-%files common
 %defattr(-,root,root)
-%doc README LICENSE doc/
-%config %{_sysconfdir}/%{name}/thin.yml
-%config %{_sysconfdir}/httpd/conf.d/%{name}.conf
-%config %{_sysconfdir}/%{name}/environment.rb
-%config %{_sysconfdir}/logrotate.d/%{name}
-%config %{_sysconfdir}/logrotate.d/%{name}-jobs
-%config %{_sysconfdir}/%{name}/mapping.yml
-%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
-%{_initddir}/%{name}
-%{_initddir}/%{name}-jobs
-%{_sysconfdir}/bash_completion.d/%{name}
-
-# Break apart the main bits
 %{homedir}/app/controllers
 %{homedir}/app/helpers
 %{homedir}/app/mailers
@@ -309,7 +294,7 @@ fi
 %{homedir}/lib/util
 %{homedir}/locale
 %{homedir}/log
-%{homedir}/public
+%{homedir}/public/stylesheets/compiled
 %{homedir}/script
 %{homedir}/spec
 %{homedir}/tmp
@@ -319,6 +304,29 @@ fi
 %{homedir}/Gemfile
 %{homedir}/Gemfile.lock
 %{homedir}/Rakefile
+
+%files common
+%defattr(-,root,root)
+%doc README LICENSE doc/
+%config %{_sysconfdir}/%{name}/thin.yml
+%config %{_sysconfdir}/httpd/conf.d/%{name}.conf
+%config %{_sysconfdir}/%{name}/environment.rb
+%config %{_sysconfdir}/logrotate.d/%{name}
+%config %{_sysconfdir}/logrotate.d/%{name}-jobs
+%config %{_sysconfdir}/%{name}/mapping.yml
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%{_initddir}/%{name}
+%{_initddir}/%{name}-jobs
+%{_sysconfdir}/bash_completion.d/%{name}
+
+# Break apart the main bits
+%{homedir}/public/assets
+%{homedir}/public/fonts
+%{homedir}/public/javascripts
+%{homedir}/public/stylesheets/*.css
+%{homedir}/public/*.html
+%{homedir}/public/favicon.ico
+
 
 %defattr(-, katello, katello)
 %{_localstatedir}/log/%{name}

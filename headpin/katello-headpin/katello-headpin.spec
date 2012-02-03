@@ -41,6 +41,9 @@ A subscription management only version of katello
 %setup -q
 
 %build
+# katello files are copied over in gen_changes
+cp -r katello/* .
+rm -rf katello
 
 # override katello base with headpin files 
 cp -r src/* .
@@ -116,15 +119,36 @@ and then run katello-configure to configure everything.
 %files
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/%{katello_name}/%{katello_name}.yml
-%{homedir}
-%{homedir}/config/assets.yml                                                                                                                                                      
-%{homedir}/public/stylesheets/compiled     
+%{homedir}/app/controllers
+%{homedir}/app/helpers
+%{homedir}/app/mailers
+%{homedir}/app/models/*.rb
+%{homedir}/app/stylesheets
+%{homedir}/app/views
+%{homedir}/autotest
+%{homedir}/ca
+%{homedir}/config
+%{homedir}/db
+%{homedir}/integration_spec
+%{homedir}/lib/*.rb
+%{homedir}/lib/navigation
+%{homedir}/lib/resources/cdn.rb
+%{homedir}/lib/tasks
+%{homedir}/lib/util
+%{homedir}/locale
+%{homedir}/log
+%{homedir}/public/stylesheets/compiled
+%{homedir}/script
+%{homedir}/spec
+%{homedir}/tmp
+%{homedir}/vendor
+%{homedir}/.bundle
+%{homedir}/config.ru
+%{homedir}/Gemfile
+%{homedir}/Gemfile.lock
+%{homedir}/Rakefile
 
 %files all
-
-%post
-# This overlays headpin onto katello
-cp -Rf %{homedir}/* %{katello_dir}
 
 %changelog
 * Mon Nov 28 2011 Tom McKay <thomasmckay@redhat.com> 0.1.107-1
