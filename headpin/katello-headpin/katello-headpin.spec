@@ -41,10 +41,6 @@ A subscription management only version of katello
 %setup -q
 
 %build
-#configure Bundler
-rm -f Gemfile.lock
-sed -i '/@@@DEV_ONLY@@@/,$d' Gemfile
-
 # katello files are copied over in gen_changes
 cp -r katello/* .
 rm -rf katello
@@ -57,6 +53,10 @@ rm -rf src
 if [ -d branding ] ; then
   cp -r branding/* .
 fi
+
+#configure Bundler
+rm -f Gemfile.lock
+sed -i '/@@@DEV_ONLY@@@/,$d' Gemfile
 
 #compile SASS files
 echo Compiling SASS files...
