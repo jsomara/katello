@@ -72,15 +72,12 @@ jammit --config config/assets.yml -f
 
 # remove extra files & stuff provided by common
 rm katello.spec
-rm public/*.html
-rm public/favicon.ico
-rm public/robots.txt
-rm -rf public/assets
-rm -rf public/fonts
-rm -rf public/images
-rm -rf public/javascripts
-rm -rf public/stylesheets/images/
-rm -rf public/stylesheets/*.css
+
+# remove glue-specific files
+rm -rf app/models/glue*
+rm lib/resources/candlepin.rb
+rm lib/resources/pulp.rb
+rm lib/resources/foreman.rb
 
 %install
 rm -rf %{buildroot}
@@ -116,6 +113,16 @@ rm -f %{buildroot}%{homedir}/lib/tasks/.gitkeep
 rm -f %{buildroot}%{homedir}/public/stylesheets/.gitkeep
 rm -f %{buildroot}%{homedir}/vendor/plugins/.gitkeep
 
+#create symlinks for data
+ln -sv %{_localstatedir}/log/%{name} %{buildroot}%{homedir}/log
+ln -sv %{datadir}/tmp %{buildroot}%{homedir}/tmp
+
+#create symlink for Gemfile.lock (it's being regenerated each start)
+ln -svf %{datadir}/Gemfile.lock %{buildroot}%{homedir}/Gemfile.lock
+
+#re-configure database to the /var/lib/katello directory
+sed -Ei 's/\s*database:\s+db\/(.*)$/  database: \/var\/lib\/katello\/\1/g' %{buildroot}%{homedir}/config/database.yml
+
 #branding
 if [ -d branding ] ; then
   ln -svf %{_datadir}/icons/hicolor/24x24/apps/system-logo-icon.png %{buildroot}%{homedir}/public/images/rh-logo.png
@@ -125,13 +132,9 @@ fi
 
 #remove development tasks
 rm %{buildroot}%{homedir}/lib/tasks/test.rake
-
-#create symlinks for data
-ln -sv %{_localstatedir}/log/%{name} %{buildroot}%{homedir}/log
-ln -sv %{datadir}/tmp %{buildroot}%{homedir}/tmp
-
-#create symlink for Gemfile.lock (it's being regenerated each start)
-ln -svf %{datadir}/Gemfile.lock %{buildroot}%{homedir}/Gemfile.lock
+rm %{buildroot}%{homedir}/lib/tasks/rcov.rake
+rm %{buildroot}%{homedir}/lib/tasks/yard.rake
+rm %{buildroot}%{homedir}/lib/tasks/hudson.rake
 
 #correct permissions
 find %{buildroot}%{homedir} -type d -print0 | xargs -0 chmod 755
@@ -178,7 +181,7 @@ and then run katello-configure to configure everything.
 %{homedir}/lib/util
 %{homedir}/locale
 %{homedir}/log
-%{homedir}/public/stylesheets/compiled
+%{homedir}/public
 %{homedir}/script
 %{homedir}/spec
 %{homedir}/tmp

@@ -294,7 +294,7 @@ fi
 %{homedir}/lib/util
 %{homedir}/locale
 %{homedir}/log
-%{homedir}/public/stylesheets/compiled
+%{homedir}/public
 %{homedir}/script
 %{homedir}/spec
 %{homedir}/tmp
@@ -318,18 +318,6 @@ fi
 %{_initddir}/%{name}
 %{_initddir}/%{name}-jobs
 %{_sysconfdir}/bash_completion.d/%{name}
-
-# Break apart the main bits
-%{homedir}/public/assets
-%{homedir}/public/fonts
-%{homedir}/public/images
-%{homedir}/public/javascripts
-%{homedir}/public/stylesheets/*.css
-%{homedir}/public/stylesheets/images
-%{homedir}/public/*.html
-%{homedir}/public/favicon.ico
-%{homedir}/public/robots.txt
-
 
 %defattr(-, katello, katello)
 %{_localstatedir}/log/%{name}
