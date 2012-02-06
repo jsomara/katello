@@ -41,6 +41,10 @@ A subscription management only version of katello
 %setup -q
 
 %build
+#configure Bundler
+rm -f Gemfile.lock
+sed -i '/@@@DEV_ONLY@@@/,$d' Gemfile
+
 # katello files are copied over in gen_changes
 cp -r katello/* .
 rm -rf katello
@@ -68,9 +72,15 @@ rm -rf %{buildroot}
 install -d -m0755 %{buildroot}%{homedir}
 install -d -m0755 %{buildroot}%{katello_dir}/config
 install -d -m0755 %{buildroot}%{_sysconfdir}/%{katello_name}
+install -d -m0755 %{buildroot}%{_localstatedir}/log/%{name}
+
+# clean the application directory before installing
+[ -d tmp ] && rm -rf tmp
 
 #copy the application to the target directory
-cp -R * %{buildroot}%{homedir}
+mkdir .bundle
+mv ./deploy/bundle-config .bundle/config
+cp -R .bundle * %{buildroot}%{homedir}
 
 #copy configs and other var files (will be all overwriten with symlinks)
 install -m 644 config/%{katello_name}.yml %{buildroot}%{_sysconfdir}/%{katello_name}/%{katello_name}.yml
@@ -97,6 +107,12 @@ fi
 
 #remove development tasks
 rm %{buildroot}%{homedir}/lib/tasks/test.rake
+
+#correct permissions
+find %{buildroot}%{homedir} -type d -print0 | xargs -0 chmod 755
+find %{buildroot}%{homedir} -type f -print0 | xargs -0 chmod 644
+chmod +x %{buildroot}%{homedir}/script/*
+chmod a+r %{buildroot}%{homedir}/ca/redhat-uep.pem
 
 %clean
 rm -rf %{buildroot}
