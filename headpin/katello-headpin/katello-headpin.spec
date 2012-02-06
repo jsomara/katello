@@ -41,22 +41,26 @@ A subscription management only version of katello
 %setup -q
 
 %build
+mkdir build
+
 # katello files are copied over in gen_changes
-cp -r katello/* .
+cp -r katello/* build
 rm -rf katello
 
 # override katello base with headpin files 
-cp -r src/* .
+cp -r src/* build
 rm -rf src
 
 #pull in branding if present
 if [ -d branding ] ; then
-  cp -r branding/* .
+  cp -r branding/* build
 fi
 
 #configure Bundler
-rm -f Gemfile.lock
-sed -i '/@@@DEV_ONLY@@@/,$d' Gemfile
+rm -f build/Gemfile.lock
+sed -i '/@@@DEV_ONLY@@@/,$d' build/Gemfile
+
+cd build
 
 #compile SASS files
 echo Compiling SASS files...
@@ -66,6 +70,18 @@ compass compile
 echo Generating Rails assets...
 jammit --config config/assets.yml -f
 
+# remove extra files & stuff provided by common
+rm katello.spec
+rm public/*.html
+rm public/favicon.ico
+rm public/robots.txt
+rm -rf public/assets
+rm -rf public/fonts
+rm -rf public/images
+rm -rf public/javascripts
+rm -rf public/stylesheets/images/
+rm -rf public/stylesheets/*.css
+
 %install
 rm -rf %{buildroot}
 #prepare dir structure
@@ -73,6 +89,8 @@ install -d -m0755 %{buildroot}%{homedir}
 install -d -m0755 %{buildroot}%{katello_dir}/config
 install -d -m0755 %{buildroot}%{_sysconfdir}/%{katello_name}
 install -d -m0755 %{buildroot}%{_localstatedir}/log/%{name}
+
+cd build 
 
 # clean the application directory before installing
 [ -d tmp ] && rm -rf tmp
@@ -108,6 +126,13 @@ fi
 #remove development tasks
 rm %{buildroot}%{homedir}/lib/tasks/test.rake
 
+#create symlinks for data
+ln -sv %{_localstatedir}/log/%{name} %{buildroot}%{homedir}/log
+ln -sv %{datadir}/tmp %{buildroot}%{homedir}/tmp
+
+#create symlink for Gemfile.lock (it's being regenerated each start)
+ln -svf %{datadir}/Gemfile.lock %{buildroot}%{homedir}/Gemfile.lock
+
 #correct permissions
 find %{buildroot}%{homedir} -type d -print0 | xargs -0 chmod 755
 find %{buildroot}%{homedir} -type f -print0 | xargs -0 chmod 644
@@ -138,7 +163,7 @@ and then run katello-configure to configure everything.
 %{homedir}/app/controllers
 %{homedir}/app/helpers
 %{homedir}/app/mailers
-%{homedir}/app/models/*.rb
+%{homedir}/app/models/
 %{homedir}/app/stylesheets
 %{homedir}/app/views
 %{homedir}/autotest
@@ -148,7 +173,7 @@ and then run katello-configure to configure everything.
 %{homedir}/integration_spec
 %{homedir}/lib/*.rb
 %{homedir}/lib/navigation
-%{homedir}/lib/resources/cdn.rb
+%{homedir}/lib/resources
 %{homedir}/lib/tasks
 %{homedir}/lib/util
 %{homedir}/locale
