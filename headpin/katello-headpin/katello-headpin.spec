@@ -72,9 +72,10 @@ jammit --config config/assets.yml -f
 
 # remove extra files & stuff provided by common
 rm katello.spec
+rm db/schema.rb
 
 # remove glue-specific files
-rm -rf app/models/glue*
+rm -rf app/models/glue/*
 rm lib/resources/candlepin.rb
 rm lib/resources/pulp.rb
 rm lib/resources/foreman.rb
@@ -85,7 +86,6 @@ rm -rf %{buildroot}
 install -d -m0755 %{buildroot}%{homedir}
 install -d -m0755 %{buildroot}%{katello_dir}/config
 install -d -m0755 %{buildroot}%{_sysconfdir}/%{katello_name}
-install -d -m0755 %{buildroot}%{_localstatedir}/log/%{name}
 
 cd build 
 
@@ -114,7 +114,6 @@ rm -f %{buildroot}%{homedir}/public/stylesheets/.gitkeep
 rm -f %{buildroot}%{homedir}/vendor/plugins/.gitkeep
 
 #create symlinks for data
-ln -sv %{_localstatedir}/log/%{name} %{buildroot}%{homedir}/log
 ln -sv %{datadir}/tmp %{buildroot}%{homedir}/tmp
 
 #create symlink for Gemfile.lock (it's being regenerated each start)
@@ -172,7 +171,9 @@ and then run katello-configure to configure everything.
 %{homedir}/autotest
 %{homedir}/ca
 %{homedir}/config
-%{homedir}/db
+%{homedir}/db/migrate/
+%{homedir}/db/products.json
+%{homedir}/db/seeds.rb
 %{homedir}/integration_spec
 %{homedir}/lib/*.rb
 %{homedir}/lib/navigation
@@ -180,7 +181,6 @@ and then run katello-configure to configure everything.
 %{homedir}/lib/tasks
 %{homedir}/lib/util
 %{homedir}/locale
-%{homedir}/log
 %{homedir}/public
 %{homedir}/script
 %{homedir}/spec

@@ -285,7 +285,9 @@ fi
 %{homedir}/autotest
 %{homedir}/ca
 %{homedir}/config
-%{homedir}/db
+%{homedir}/db/migrate/
+%{homedir}/db/products.json
+%{homedir}/db/seeds.rb
 %{homedir}/integration_spec
 %{homedir}/lib/*.rb
 %{homedir}/lib/navigation
@@ -293,7 +295,6 @@ fi
 %{homedir}/lib/tasks
 %{homedir}/lib/util
 %{homedir}/locale
-%{homedir}/log
 %{homedir}/public
 %{homedir}/script
 %{homedir}/spec
@@ -318,6 +319,8 @@ fi
 %{_initddir}/%{name}
 %{_initddir}/%{name}-jobs
 %{_sysconfdir}/bash_completion.d/%{name}
+%{homedir}/log
+%{homedir}/db/schema.rb
 
 %defattr(-, katello, katello)
 %{_localstatedir}/log/%{name}
