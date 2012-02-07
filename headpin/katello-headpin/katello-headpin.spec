@@ -13,7 +13,7 @@
 
 %global katello_name katello
 %global headpin_name headpin
-%global homedir %{_datarootdir}/%{headpin_name}
+%global homedir %{_datarootdir}/%{katello_name}
 %global katello_dir %{_datarootdir}/%{katello_name}
 %global datadir %{_sharedstatedir}/%{katello_name}
 %global confdir deploy/common
