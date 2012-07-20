@@ -206,6 +206,17 @@ module Glue::Candlepin::Consumer
       facts["network.hostname"]
     end
 
+    def interfaces
+      interfaces = []
+      facts.keys.each do |key|
+        match = /net\.interface\.(.*?)\.\w*$/.match(key)
+        if match != nil && match[1] != nil
+          interfaces << match[1]
+        end
+      end
+      interfaces.unique
+    end
+
     def ip
       facts['network.ipv4_address']
     end
