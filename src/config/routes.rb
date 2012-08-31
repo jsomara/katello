@@ -40,7 +40,7 @@ Src::Application.routes.draw do
   end
 
   resources :content_search do
-      collection do 
+      collection do
         post :errata
         post :products
         post :packages
@@ -375,7 +375,7 @@ Src::Application.routes.draw do
       get :items
     end
     resources :ldap_groups, :only => [] do
-      member do 
+      member do
 		delete "destroy" => "roles#destroy_ldap_group", :as => "destroy"
       end
       collection do
@@ -449,6 +449,16 @@ Src::Application.routes.draw do
         end
       end
       resource :packages, :action => [:create, :update, :destroy], :controller => :system_packages
+
+      resource :custom_info , :only => [] do
+        match '/', :action => :create, :via => :post
+        match '/', :action => :index, :via => :get
+        match '/:keyname', :action => :show, :via => :get
+        match '/:keyname/:current_value', :action => :update, :via => :put
+        match '/:keyname/:value', :action => :destroy, :via => :delete
+        match '/:keyname', :action => :destroy, :via => :delete
+        match '/', :action => :destroy, :via => :delete
+      end
     end
 
     resources :providers, :except => [:index] do
@@ -663,7 +673,7 @@ Src::Application.routes.draw do
     resources :crls, :only => [:index]
 
     match "/status"  => "ping#status", :via => :get
-    match "/version"  => "ping#version", :via => :get 
+    match "/version"  => "ping#version", :via => :get
     # some paths conflicts with rhsm
     scope 'katello' do
 
