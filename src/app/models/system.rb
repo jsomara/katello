@@ -64,7 +64,7 @@ class System < ActiveRecord::Base
   has_many :system_system_groups, :dependent => :destroy
   has_many :system_groups, {:through => :system_system_groups, :before_add => :add_pulp_consumer_group, :before_remove => :remove_pulp_consumer_group}.merge(update_association_indexes)
 
-  has_many :custom_info, :as => :informable
+  has_many :custom_info, :as => :informable, :dependent => :destroy
 
   validates :environment, :presence => true, :non_library_environment => true
   # multiple systems with a single name are supported
@@ -77,7 +77,6 @@ class System < ActiveRecord::Base
   scope :by_env, lambda { |env| where('environment_id = ?', env) unless env.nil?}
   scope :completer_scope, lambda { |options| readable(options[:organization_id])}
 
-  
   class << self
     def architectures
       { 'i386' => 'x86', 'ia64' => 'Itanium', 'x86_64' => 'x86_64', 'ppc' => 'PowerPC',
@@ -104,7 +103,6 @@ class System < ActiveRecord::Base
 
   def consumed_pool_ids=attributes
     attribs_to_unsub = consumed_pool_ids - attributes
-   
     attribs_to_unsub.each do |id|
       self.unsubscribe id
     end
@@ -211,7 +209,7 @@ class System < ActiveRecord::Base
         where_clause += "system_system_groups.system_group_id in (#{SystemGroup.systems_readable(org).select(:id).to_sql})"
         joins("left outer join system_system_groups on systems.id =
                                     system_system_groups.system_id").where(where_clause)
-      end    
+      end
   end
 
   def readable?
