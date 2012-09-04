@@ -66,6 +66,7 @@ class Api::CustomInfoController < Api::ApiController
 
   def find_informable
     raise HttpErrors::BadRequest, _("Please provide an informable_type") if params[:informable_type].nil?
+    raise HttpErrors::BadRequest, _("Please provide an informable_id") if params[:informable_id].nil?
     @klass = params[:informable_type].classify.constantize
     @informable = @klass.find(params[:informable_id])
     @informable
