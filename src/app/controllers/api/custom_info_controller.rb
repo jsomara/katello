@@ -11,6 +11,8 @@
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
 
 class Api::CustomInfoController < Api::ApiController
+  respond_to :json
+
   before_filter :find_informable
   before_filter :authorize
 
@@ -32,22 +34,25 @@ class Api::CustomInfoController < Api::ApiController
     raise HttpErrors::BadRequest, _("A Custom Info keyname must be provided") if params[:keyname].nil?
     raise HttpErrors::BadRequest, _("A Custom Info value must be provided") if params[:value].nil?
     args = params.slice(:keyname, :value)
-    render :json => @informable.custom_info.create(args).to_json # keyname and value
+    create_response = @informable.custom_info.create(args)
+    render :json => create_response.to_json
   end
 
   def index
-    render :json => consolidate(@informable.custom_info).to_json
+    index_response = consolidate(@informable.custom_info)
+    render :json => index_response.to_json
   end
 
   def show
-    render :json => consolidate(@informable.custom_info.where(:keyname => params[:keyname]))
+    show_response = consolidate(@informable.custom_info.where(:keyname => params[:keyname]))
+    render :json => show_response.to_json
   end
 
   def update
     info_to_update = @informable.custom_info.where(:keyname => params[:keyname], :value => params[:current_value])
-    raise HttpErrors::NotFound, _("Couldn't find Custom Info '#{params[:keyname]}: #{params[:current_value]}'") if info_to_update.empty?
+    raise HttpErrors::NotFound, _("Couldn't find Custom Info '%s: %s'") % [params[:keyname], params[:current_value]] if info_to_update.empty?
     info_to_update.first.update_attributes(:value => params[:value])
-    render :json => @informable.custom_info.where(:keyname => params[:keyname], :value => params[:value])
+    render :json => consolidate(@informable.custom_info.where(:keyname => params[:keyname], :value => params[:value])).to_json
   end
 
   # When all args are supplied (keyname, value), only that one key-value pair will be destroyed.
@@ -56,23 +61,26 @@ class Api::CustomInfoController < Api::ApiController
   def destroy
     args = params.slice(:keyname, :value)
     unless args.empty?
-      response = @informable.custom_info.where(args).each { |i| i.destroy }
+      info_to_destroy = @informable.custom_info.where(args)
+      raise HttpErrors::NotFound, _("Couldn't find Custom Info matching that criteria") if info_to_destroy.empty?
+      destroy_response = [info_to_destroy.first.destroy]
     else
-      response = @informable.custom_info.each { |i| i.destroy }
+      destroy_response = @informable.custom_info.each { |i| i.destroy }
     end
 
-    render :json => response
+    destroy_response = consolidate(destroy_response)
+    render :json => destroy_response.to_json
   end
 
   def find_informable
-    raise HttpErrors::BadRequest, _("Please provide an informable_type") if params[:informable_type].nil?
-    raise HttpErrors::BadRequest, _("Please provide an informable_id") if params[:informable_id].nil?
+    raise HttpErrors::BadRequest, _("Please provide an informable_type and informable_id") if params[:informable_type].nil? or params[:informable_id].nil?
     @klass = params[:informable_type].classify.constantize
     @informable = @klass.find(params[:informable_id])
     @informable
   end
 
   protected
+
   # informable.custom_info returns an array containing a hash for each key-value pair like this:
   #
   # [ #<CustomInfo ... keyname: "asset_tag", value: "1234" ... >,
@@ -82,11 +90,12 @@ class Api::CustomInfoController < Api::ApiController
   #
   # consolidate is used to extract the meat of the returned CustomInfo array:
   #
-  # [ { "asset_tag" => ["1234"] },
-  #   { "user" => ["thor", "loki", "odin"] } ]
+  # { "asset_tag" => ["1234"],
+  #   "user" => ["thor", "loki", "odin"] }
   # TODO unit test this crap
-  def consolidate(infos)
-    return infos.group_by(&:keyname).map{|k,v| {k => v.map(&:value)}}
+  def consolidate(info)
+    return {} if info.empty?
+    return info.group_by(&:keyname).map{|k,v| {k => v.map(&:value)}}.inject({}) { |hash, h| hash.merge(h) }
   end
 
 end
