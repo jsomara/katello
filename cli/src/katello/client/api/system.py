@@ -173,3 +173,32 @@ class SystemAPI(KatelloAPI):
     def remove_consumer_deletion_record(self, uuid):
         path = "/api/consumers/%s/deletionrecord" % uuid
         return self.server.DELETE(path)[1]
+
+    def add_system_custom_info(self, system_uuid, system_id, keyname, value):
+        data = { 'keyname': keyname, 'value': value, 'informable_type': 'system', 'informable_id': system_id }
+        path = "/api/systems/%s/custom_info" % system_uuid
+        return self.server.POST(path, data)[1]
+
+    def view_system_custom_info(self, system_uuid, system_id, keyname = None):
+        query = {'informable_type': 'system', 'informable_id': system_id }
+        if keyname:
+            path = "/api/systems/%s/custom_info/%s" % (system_uuid, keyname)
+        else:
+            path = "/api/systems/%s/custom_info" % system_uuid
+        return self.server.GET(path, query)[1]
+
+    def update_system_custom_info(self, system_uuid, system_id, keyname, current_value, value):
+        data = { 'value': value , 'informable_type': 'system', 'informable_id': system_id }
+        path = "/api/systems/%s/custom_info/%s/%s" % (system_uuid, keyname, current_value)
+        return self.server.PUT(path, data)[1]
+
+    def remove_system_custom_info(self, system_uuid, system_id, keyname = None, value = None):
+        data = { 'informable_type': 'system', 'informable_id': system_id }
+        if keyname:
+            if value:
+                path = "/api/systems/%s/custom_info/%s/%s" % (system_uuid, keyname, value)
+            else:
+                path = "/api/systems/%s/custom_info/%s" % (system_uuid, keyname)
+        else:
+            path = "/api/systems/%s/custom_info" % system_uuid
+        return self.server.DELETE(path, data)[1]

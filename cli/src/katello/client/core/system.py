@@ -885,6 +885,155 @@ class RemoveSystemGroups(SystemAction):
             return os.EX_DATAERR
 
 
+class AddCustomInfo(SystemAction):
+
+    description = _('add custom infomation to a system')
+
+    def setup_parser(self, parser):
+        parser.add_option('--name', dest='name', help=_("System name (required)"))
+        opt_parser_add_org(parser, required=1)
+        parser.add_option('--keyname', dest='keyname', help=_("name to identify the custom info (required)"))
+        parser.add_option('--value', dest='value', help=_("the custom info (required)"))
+
+    def check_options(self, validator):
+        validator.require(('org', 'name', 'keyname', 'value'))
+
+    def run(self):
+        org_name = self.get_option('org')
+        sys_name = self.get_option('name')
+        keyname = self.get_option('keyname')
+        value = self.get_option('value')
+
+        system = self.api.systems_by_org(org_name, {'name': sys_name})
+
+        if system is None or len(system) == 0:
+            print _("Could not find System [ %s ] in Org [ %s ]") % (sys_name, org_name)
+            return os.EX_DATAERR
+        else:
+            system = system[0]
+
+        response = self.api.add_system_custom_info(system['uuid'], system['id'], keyname, value)
+
+        test_record(response,
+            _("Successfully added custom information [ %s : %s ] to system [ %s ]") % (keyname, value, sys_name),
+            _("Could not add custom information [ %s : %s ] to system [ %s ]") % (keyname, value, sys_name)
+        )
+
+class ViewCustomInfo(SystemAction):
+
+    description = _('view custom info attached to a system')
+
+    def setup_parser(self, parser):
+        parser.add_option('--name', dest='name', help=_("System name (required)"))
+        opt_parser_add_org(parser, required=1)
+        parser.add_option('--keyname', dest='keyname', help=_("name of the custom info"))
+
+    def check_options(self, validator):
+        validator.require(('org', 'name'))
+
+    def run(self):
+        org_name = self.get_option('org')
+        sys_name = self.get_option('name')
+        keyname = self.get_option('keyname')
+
+        system = self.api.systems_by_org(org_name, {'name': sys_name})
+
+        if system is None or len(system) == 0:
+            print _("Could not find System [ %s ] in Org [ %s ]") % (sys_name, org_name)
+            return os.EX_DATAERR
+        else:
+            system = system[0]
+
+        system_uuid = system['uuid']
+        system_id = system['id']
+
+        custom_info = self.api.view_system_custom_info(system_uuid, system_id, keyname)
+
+        for k in custom_info.keys():
+            self.printer.add_column(k, k)
+
+        self.printer.set_header(_("Custom Information For System [ %s ] in Org [ %s ]") % (sys_name, org_name))
+
+        self.printer.print_item(custom_info)
+
+
+class UpdateCustomInfo(SystemAction):
+
+    description = _("update custom info for a system")
+
+    def setup_parser(self, parser):
+        parser.add_option('--name', dest='name', help=_("System name (required)"))
+        opt_parser_add_org(parser, required=1)
+        parser.add_option('--keyname', dest='keyname', help=_("name of the custom info"))
+        parser.add_option('--current-value', dest='current-value', help=_("old value to update"))
+        parser.add_option('--new-value', dest='new-value', help=_("replacement value"))
+
+    def check_options(self, validator):
+        validator.require(('org', 'name', 'keyname', 'current-value', 'new-value'))
+
+    def run(self):
+        org_name = self.get_option('org')
+        sys_name = self.get_option('name')
+        keyname = self.get_option('keyname')
+        current_value = self.get_option('current-value')
+        new_value = self.get_option('new-value')
+
+        system = self.api.systems_by_org(org_name, {'name': sys_name})
+
+        if system is None or len(system) == 0:
+            print _("Could not find System [ %s ] in Org [ %s ]") % (sys_name, org_name)
+            return os.EX_DATAERR
+        else:
+            system = system[0]
+
+        system_uuid = system['uuid']
+        system_id = system['id']
+
+        response = self.api.update_system_custom_info(system_uuid, system_id, keyname, current_value, new_value)
+
+        if response[keyname][0] == new_value:
+            print _("Successfully updated custom information [ %s : %s ] for system [ %s ]") % (keyname, new_value, sys_name),
+        else:
+            print _("Could not update custom information [ %s : %s ] for system [ %s ]") % (keyname, new_value, sys_name)
+
+
+class RemoveCustomInfo(SystemAction):
+
+    description = _("remove custom info from a system")
+
+    def setup_parser(self, parser):
+        parser.add_option('--name', dest='name', help=_("System name (required)"))
+        opt_parser_add_org(parser, required=1)
+        parser.add_option('--keyname', dest='keyname', help=_("name of the custom info"))
+        parser.add_option('--value', dest='value', help=_("value of the custom info"))
+
+    def check_options(self, validator):
+        validator.require(('org', 'name'))
+
+    def run(self):
+        org_name = self.get_option('org')
+        sys_name = self.get_option('name')
+        keyname = self.get_option('keyname')
+        value = self.get_option('value')
+
+        system = self.api.systems_by_org(org_name, {'name': sys_name})
+
+        if system is None or len(system) == 0:
+            print _("Could not find System [ %s ] in Org [ %s ]") % (sys_name, org_name)
+            return os.EX_DATAERR
+        else:
+            system = system[0]
+
+        system_uuid = system['uuid']
+        system_id = system['id']
+
+        response = self.api.remove_system_custom_info(system_uuid, system_id, keyname, value)
+
+        if response:
+            print _("Successfully removed custom information from system [ %s ]") % sys_name
+        else:
+            print _("Could not remove custom information from system [ %s ]") % sys_name
+
 
 class System(Command):
 
