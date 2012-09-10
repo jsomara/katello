@@ -5,7 +5,7 @@ class CustomInfo < ActiveRecord::Base
 
   validates :keyname, :presence => true
   validates :value, :presence => true
-  validates_uniqueness_of :keyname, :scope => [:value], :message => "and Value combination must be unique"
+  validates_uniqueness_of :keyname, :scope => [:value, :informable_type, :informable_id], :message => "already exists for this object"
 
   validates :informable_id, :presence => true
   validates :informable_type, :presence => true
