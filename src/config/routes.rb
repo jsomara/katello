@@ -449,16 +449,6 @@ Src::Application.routes.draw do
         end
       end
       resource :packages, :action => [:create, :update, :destroy], :controller => :system_packages
-
-      resource :custom_info , :only => [] do
-        match '/', :action => :create, :via => :post
-        match '/', :action => :index, :via => :get
-        match '/:keyname', :action => :show, :via => :get
-        match '/:keyname/:current_value', :action => :update, :via => :put
-        match '/:keyname/:value', :action => :destroy, :via => :delete
-        match '/:keyname', :action => :destroy, :via => :delete
-        match '/', :action => :destroy, :via => :delete
-      end
     end
 
     resources :providers, :except => [:index] do
@@ -718,6 +708,15 @@ Src::Application.routes.draw do
     if Rails.env == "development"
       get 'status/memory'
     end
+
+    # custom information
+    match '/custom_info/:informable_type/:informable_id' => 'custom_info#create', :via => :post
+    match '/custom_info/:informable_type/:informable_id' => 'custom_info#index', :via => :get
+    match '/custom_info/:informable_type/:informable_id/:keyname' => 'custom_info#show', :via => :get
+    match '/custom_info/:informable_type/:informable_id/:keyname/:current_value' => 'custom_info#update', :via => :put
+    match '/custom_info/:informable_type/:informable_id/:keyname/:value' => 'custom_info#destroy', :via => :delete
+    match '/custom_info/:informable_type/:informable_id/:keyname' => 'custom_info#destroy', :via => :delete
+    match '/custom_info/:informable_type/:informable_id' => 'custom_info#destroy', :via => :delete
 
     match '*a', :to => 'errors#render_404'
   # end '/api' namespace

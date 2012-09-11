@@ -912,12 +912,12 @@ class AddCustomInfo(SystemAction):
         else:
             system = system[0]
 
-        response = self.api.add_system_custom_info(system['uuid'], system['id'], keyname, value)
+        response = self.api.add_system_custom_info(system['id'], keyname, value)
 
-        test_record(response,
-            _("Successfully added custom information [ %s : %s ] to system [ %s ]") % (keyname, value, sys_name),
-            _("Could not add custom information [ %s : %s ] to system [ %s ]") % (keyname, value, sys_name)
-        )
+        if response:
+            print _("Successfully added custom information [ %s : %s ] to system [ %s ]") % (keyname, value, sys_name)
+        else:
+            print _("Could not add custom information [ %s : %s ] to system [ %s ]") % (keyname, value, sys_name)
 
 class ViewCustomInfo(SystemAction):
 
@@ -944,10 +944,7 @@ class ViewCustomInfo(SystemAction):
         else:
             system = system[0]
 
-        system_uuid = system['uuid']
-        system_id = system['id']
-
-        custom_info = self.api.view_system_custom_info(system_uuid, system_id, keyname)
+        custom_info = self.api.view_system_custom_info(system['id'], keyname)
 
         for k in custom_info.keys():
             self.printer.add_column(k, k)
@@ -986,10 +983,7 @@ class UpdateCustomInfo(SystemAction):
         else:
             system = system[0]
 
-        system_uuid = system['uuid']
-        system_id = system['id']
-
-        response = self.api.update_system_custom_info(system_uuid, system_id, keyname, current_value, new_value)
+        response = self.api.update_system_custom_info(system['id'], keyname, current_value, new_value)
 
         if response[keyname][0] == new_value:
             print _("Successfully updated custom information [ %s : %s ] for system [ %s ]") % (keyname, new_value, sys_name),
@@ -1024,10 +1018,7 @@ class RemoveCustomInfo(SystemAction):
         else:
             system = system[0]
 
-        system_uuid = system['uuid']
-        system_id = system['id']
-
-        response = self.api.remove_system_custom_info(system_uuid, system_id, keyname, value)
+        response = self.api.remove_system_custom_info(system['id'], keyname, value)
 
         if response:
             print _("Successfully removed custom information from system [ %s ]") % sys_name

@@ -35,7 +35,7 @@ class Api::CustomInfoController < Api::ApiController
     raise HttpErrors::BadRequest, _("A Custom Info value must be provided") if params[:value].nil?
     args = params.slice(:keyname, :value)
     create_response = @informable.custom_info.create(args)
-    render :json => create_response.to_json
+    render :json => consolidate([create_response]).to_json
   end
 
   def index
