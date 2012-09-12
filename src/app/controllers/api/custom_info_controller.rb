@@ -63,7 +63,7 @@ class Api::CustomInfoController < Api::ApiController
     unless args.empty?
       info_to_destroy = @informable.custom_info.where(args)
       raise HttpErrors::NotFound, _("Couldn't find Custom Info matching that criteria") if info_to_destroy.empty?
-      destroy_response = [info_to_destroy.first.destroy]
+      destroy_response = info_to_destroy.each { |i| i.destroy }
     else
       destroy_response = @informable.custom_info.each { |i| i.destroy }
     end
