@@ -11,7 +11,6 @@
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
 
 require 'spec_helper.rb'
-require 'helpers/system_test_data.rb'
 include OrchestrationHelper
 include SystemHelperMethods
 
@@ -21,6 +20,7 @@ describe Api::CustomInfoController do
   include AuthorizationHelperMethods
 
   let(:facts) { {"distribution.name" => "Fedora"} }
+  let(:uuid) { '1234' }
 
   before (:each) do
     login_user
@@ -36,12 +36,30 @@ describe Api::CustomInfoController do
     @org = Organization.create!(:name => "test_org", :cp_key => "test_org")
     @env1 = KTEnvironment.create!(:name => "test_env", :prior => @org.library.id, :organization => @org)
 
-    @system = System.create!(:name => "test_sys", :cp_type => "system", :environment => @env1.id, :facts => facts)
+    @system = System.create!(:name => "test_sys", :cp_type => "system", :environment => @env1, :facts => facts)
   end
 
-  describe "attach to a aystem" do
-    CustomInfo.should_receive(:create).with(hash_including(:informable_type => 'system', :informable_id => @system.id, :keyname => "test_key", :value => "test_value")).once.and_return()
-    post :create, :informable_id => @system.id, :informable_type => "system", :keyname => "test_key", :value => "test_value"
-    response.code.should == "200"
+  describe "create custom infoz" do
+
+    it "should return 200 with successful create" do
+      post :create, :informable_id => @system.id, :informable_type => "system", :keyname => "test_key", :value => "test_value"
+      response.code.should == "200"
+      System.find(@system.id).custom_info.size.should == 1
+    end
+
+    it "should require valid informable type" do
+      post :create, :informable_id => @system.id, :informable_type => "systemic", :keyname => "test_key", :value => "test_value"
+      response.code.should == "500"
+    end
+
+    it "should require valid system id" do
+      post :create, :informable_id => (@system.id + 2), :informable_type => "systemic", :keyname => "test_key", :value => "test_value"
+      response.code.should == "500"
+    end
+
+    it "should require key + value pairs" do
+      post :create, :informable_id => (@system.id + 2), :informable_type => "systemic"
+      response.code.should == "500"
+    end
   end
 end
