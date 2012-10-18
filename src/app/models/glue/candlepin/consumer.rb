@@ -176,7 +176,7 @@ module Glue::Candlepin::Consumer
     end
 
     def to_json
-      super(:methods => [:href, :facts, :idCert, :owner, :autoheal, :release, :releaseVer])
+      super(:methods => [:href, :facts, :idCert, :owner, :autoheal, :release, :releaseVer, :lastCheckin, :interface_list])
     end
 
     def convert_from_cp_fields(cp_json)
@@ -235,6 +235,16 @@ module Glue::Candlepin::Consumer
         interface_set << { :name => interface, :addr => addr } if addr != nil
       end
       interface_set
+    end
+
+    # gussy up interface list for json
+    def interface_list
+      ifs = self.interfaces.each
+      interface_list = []
+      ifs.each do |k|
+        interface_list << "#{k[:name]} : #{k[:addr]}"
+      end
+      interface_list
     end
 
     def ip

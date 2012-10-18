@@ -135,11 +135,13 @@ class Info(SystemAction):
         self.printer.add_column('location')
         self.printer.add_column('created_at', 'Registered', formatter=format_date)
         self.printer.add_column('updated_at', 'Last updated', formatter=format_date)
+        self.printer.add_column('lastCheckin', 'Last Checked In', formatter=format_date)
         self.printer.add_column('description', multiline=True)
         if 'releaseVer' in system and system['releaseVer']:
             self.printer.add_column('releaseVer', 'OS release')
         self.printer.add_column('activation_keys', multiline=True, show_with=printer.VerboseStrategy)
         self.printer.add_column('host', show_with=printer.VerboseStrategy)
+        self.printer.add_column('interface_list', 'Network Interfaces', multiline=True, show_with=printer.VerboseStrategy)
         self.printer.add_column('serviceLevel', _('Service Level'))
         self.printer.add_column('guests', show_with=printer.VerboseStrategy)
         if "template" in system:
