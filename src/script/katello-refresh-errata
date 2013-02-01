@@ -1,0 +1,11 @@
+#!/bin/env bash
+# script for refreshing the newest errata from CDN. This is only for
+# errata notifications if the user is not running pulp 
+
+# running the script from rails root
+RAILS_DIR=/usr/share/katello
+pushd $RAILS_DIR &> /dev/null
+
+rake katello:refresh_errata RAILS_ENV=production >/dev/null
+
+popd &> /dev/null

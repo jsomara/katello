@@ -541,6 +541,7 @@ install -m 644 config/environments/production.rb %{buildroot}%{_sysconfdir}/%{na
 #copy cron scripts to be scheduled daily
 install -d -m0755 %{buildroot}%{_sysconfdir}/cron.daily
 install -m 755 script/katello-refresh-cdn %{buildroot}%{_sysconfdir}/cron.daily/katello-refresh-cdn
+install -m 755 script/katello-refresh-errata %{buildroot}%{_sysconfdir}/cron.daily/katello-refresh-errata
 
 #copy init scripts and sysconfigs
 install -Dp -m0644 %{confdir}/%{name}.sysconfig %{buildroot}%{_sysconfdir}/sysconfig/%{name}
@@ -798,6 +799,7 @@ usermod -a -G katello-shared tomcat
 %{homedir}/config.ru
 %{homedir}/Gemfile.in
 %{homedir}/Rakefile
+%config(missingok) %{_sysconfdir}/cron.daily/katello-refresh-errata
 
 %files headpin-all
 

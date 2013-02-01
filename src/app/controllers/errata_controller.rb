@@ -17,10 +17,14 @@ class ErrataController < ApplicationController
   before_filter :authorize
 
   def rules
-    view = lambda{
-      !Repository.readable_in_org(current_organization).where(
-          :pulp_id=>@errata.repoids).empty?
-    }
+    if AppConfig.use_pulp?
+      view = lambda{
+        !Repository.readable_in_org(current_organization).where(
+            :pulp_id=>@errata.repoids).empty?
+      }
+    else
+      view = true
+    end
     {
         :show => view,
         :packages => view,
