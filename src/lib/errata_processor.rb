@@ -20,25 +20,17 @@ class ErrataProcessor
     @latest_errata = last_modified
   end
 
-  # general process for errata processing
-  # 1. HEAD errata file from upstream; check date
-  # 2. if date < today, end
-  # 3. else download file, parse errata until "stale" errata
-  #    received
-  #
-  # this should run by default every few hours
   def refresh
+    errata = []
     if upstream_errata_new?(url, latest_errata)
-      load_errata(url)
+      errata = load_errata(url)
     end
+    return errata
   end
 
-# determine if the upstream errata is fresh
   def upstream_errata_new?(url, latest_errata)
-    Rails.logger.info "Checking remote server for new errata"
     modified_date = get_modified_date_from_url(url)
-    Rails.logger.info "Remote server last modified #{modified_date}"
-    Rails.logger.info "Last errata update from #{latest_errata}"
+    Rails.logger.info "Remote last modified #{modified_date}: local last modified : #{latest_errata}"
     return modified_date > latest_errata
   end
 

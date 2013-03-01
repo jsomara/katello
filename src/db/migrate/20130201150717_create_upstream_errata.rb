@@ -3,7 +3,7 @@ class CreateUpstreamErrata < ActiveRecord::Migration
     create_table :upstream_errata do |t|
       t.string :errata_id
       t.string :title
-      t.string :description
+      t.text :description, :limit => nil
       t.string :version
       t.string :release
       t.string :status
