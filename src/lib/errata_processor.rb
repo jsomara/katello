@@ -21,6 +21,19 @@ class ErrataProcessor
   end
 
   def refresh
+    if !Katello.config.use_pulp
+      @latest_errata ||= UpstreamErrata.latest_errata
+      errata = load_data_from_upstream
+      if !errata.empty?
+        errata.each do |e|
+          new_errata = UpstreamErrata.from_json(e)
+          new_errata.update_or_save
+        end
+      end
+    end
+  end
+
+  def load_data_from_upstream
     errata = []
     if upstream_errata_new?(url, latest_errata)
       errata = load_errata(url)
@@ -43,7 +56,6 @@ class ErrataProcessor
 
   def load_errata(url)
     return parse_remote_payload(url)
-    Rails.logger.info "Loaded #{errata.size} new errata"
   end
 
   # load remote stream xz file, decompress stream with XZ library

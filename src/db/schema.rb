@@ -634,6 +634,26 @@ ActiveRecord::Schema.define(:version => 20130319162919) do
   add_index "task_statuses", ["user_id"], :name => "index_task_statuses_on_user_id"
   add_index "task_statuses", ["uuid"], :name => "index_task_statuses_on_uuid"
 
+  create_table "upstream_errata", :force => true do |t|
+    t.string   "errata_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "version"
+    t.string   "release"
+    t.string   "status"
+    t.date     "updated"
+    t.date     "issued"
+    t.string   "from_str"
+    t.boolean  "reboot_suggested"
+    t.string   "references"
+    t.string   "pkglist"
+    t.string   "severity"
+    t.string   "repoids"
+    t.string   "engproduct_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_notices", :force => true do |t|
     t.integer "user_id"
     t.integer "notice_id"

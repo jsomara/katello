@@ -1,15 +1,30 @@
 class UpstreamErrata < ActiveRecord::Base
 
-  def save_if_new
-    old_errata = UpstreamErrata.where("errata_id = '#{self.errata_id}'")
-    if old_errata != nil
-      if updated > old_errata.updated
-        old_errata.delete
-        save
-      end
-    else
+  def update_or_save
+    old = old_erratum
+    if old == nil
       save
+    elsif old.updated < updated
+      update_errata(old)
     end
+  end
+
+  def old_erratum
+    UpstreamErrata.where("errata_id = '#{self.errata_id}'").first
+  end
+
+  def update_errata(old)
+    old.title = self.title
+    old.description = self.description
+    old.version = self.version
+    old.release = self.release
+    old.status = self.status
+    old.updated = self.updated
+    old.issued = self.issued
+    old.reboot_suggested = self.reboot_suggested
+    old.severity = self.severity
+    old.engproduct_id = self.engproduct_id
+    old.save
   end
 
   def self.latest_errata
@@ -21,6 +36,8 @@ class UpstreamErrata < ActiveRecord::Base
     end
   end
 
+  # note that this method is highly volatile until the format is completely
+  # decided upon. these values are essentially placeholders until then
   def self.from_json(json)
     errata = UpstreamErrata.new
     errata.errata_id = json["id"]
@@ -45,19 +62,6 @@ class UpstreamErrata < ActiveRecord::Base
 
   def self.combine_engids(j)
     return j.join(",")
-  end
-
-  def self.refresh(url)
-    if !Katello.config.use_pulp
-      ep = ErrataProcessor.new(url, latest_errata)
-      errata = ep.refresh
-      if !errata.empty?
-        errata.each do |e|
-          new_errata = from_json(e)
-          new_errata.save_if_new
-        end
-      end
-    end
   end
 
 end
