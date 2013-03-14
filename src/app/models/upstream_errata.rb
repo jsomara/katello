@@ -31,4 +31,22 @@ class UpstreamErrata < ActiveRecord::Base
     errata
   end
 
+  def self.refresh(url)
+    ep = ErrataProcessor.new(url, self.last_errata)
+    errata = ep.refresh
+    errata.each do |e|
+        UpstreamErrata.load_from_json(e)
+    end
+  end
+
+  def self.load_from_json(e)
+    upstream_errata = UpstreamErrata.from_json(e)
+    if upstream_errata.is_new_errata
+      upstream_errata.save
+    end
+  end
+
+  def self.last_errata
+    return DateTime.parse('15 Feb 2003')
+  end
 end

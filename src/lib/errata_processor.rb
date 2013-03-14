@@ -15,11 +15,9 @@ require 'net-http'
 
 class ErrataProcessor
 
-  def initialize
-    if !AppConfig.use_pulp?
-      @url = AppConfig.errata_url
-      @latest_errata = UpstreamErrata.last_installed_date
-    end
+  def initialize(url, last_modified=nil)
+    @url = url
+    @latest_errata = last_modified
   end
 
   # general process for errata processing
@@ -30,36 +28,30 @@ class ErrataProcessor
   #
   # this should run by default every few hours
   def refresh
-    if !AppConfig.use_pulp?
-      process_errata(@url, @latest_errata)
+    if upstream_errata_new?(url, latest_errata)
+      load_errata(url)
     end
   end
 
-  def process_errata(url, latest_errata)
-    process_new_errata(url) if upstream_errata_new?(url, latest_errata)
-  end
-
-  # determine if the upstream errata is fresh
+# determine if the upstream errata is fresh
   def upstream_errata_new?(url, latest_errata)
     Rails.logger.info "Checking remote server for new errata"
-    uri = URI(url)
-    http = Net::HTTP.start(uri.host, uri.port)
-    modified_date_str = http.head(uri.path)['last-modified']
-    modified_date = DateTime.parse(modified_date_str)
+    modified_date = get_modified_date_from_url(url)
     Rails.logger.info "Remote server last modified #{modified_date}"
     Rails.logger.info "Last errata update from #{latest_errata}"
     return modified_date > latest_errata
   end
 
-  def process_new_errata(url)
-    Rails.logger.info "Processing new upstream errata...."
-    errata = parse_remote_payload(url)
-    errata.each do |e|
-      upstream_errata = UpstreamErrata.from_json(e)
-      # TODO only save if new errata
-      upstream_errata.save
-    end
-    Rails.logger.info "Added #{errata.size} new errata"
+  def get_modified_date_from_url(url)
+    uri = URI(url)
+    http = Net::HTTP.start(uri.host, uri.port)
+    modified_date_str = http.head(uri.path)['last-modified']
+    return DateTime.parse(modified_date_str)
+  end
+
+  def load_errata(url)
+    return parse_remote_payload(url)
+    Rails.logger.info "Loaded #{errata.size} new errata"
   end
 
   # load remote stream xz file, decompress stream with XZ library
