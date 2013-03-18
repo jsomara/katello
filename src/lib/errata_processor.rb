@@ -11,7 +11,7 @@
 
 require 'xz'
 require 'open-uri'
-require 'net-http'
+require 'net/http'
 
 class ErrataProcessor
 
@@ -23,7 +23,7 @@ class ErrataProcessor
   def refresh
     if !Katello.config.use_pulp
       @latest_errata ||= UpstreamErrata.latest_errata
-      errata = load_data_from_upstream
+      errata = load_data_from_upstream(@url, @latest_errata)
       if !errata.empty?
         errata.each do |e|
           new_errata = UpstreamErrata.from_json(e)
@@ -33,7 +33,7 @@ class ErrataProcessor
     end
   end
 
-  def load_data_from_upstream
+  def load_data_from_upstream(url, latest_errata)
     errata = []
     if upstream_errata_new?(url, latest_errata)
       errata = load_errata(url)
