@@ -12,20 +12,20 @@
 
 class ErrataController < ApplicationController
 
-
-  before_filter :lookup_errata
   before_filter :authorize
+  before_filter :lookup_errata, :except => [:index]
 
   def rules
-    if AppConfig.use_pulp?
+    if Katello.config.katello?
       view = lambda{
         !Repository.readable_in_org(current_organization).where(
             :pulp_id=>@errata.repoids).empty?
       }
     else
-      view = true
+      view = lambda{ !Katello.config.katello? }
     end
     {
+        :index => view,
         :show => view,
         :packages => view,
         :short_details => view
@@ -44,11 +44,13 @@ class ErrataController < ApplicationController
     render :partial=>"short_details"
   end
 
-  private
+  def index
+    render :index
+  end
 
+  private
 
   def lookup_errata
     @errata = Errata.find(params[:id])
   end
-
 end

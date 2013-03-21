@@ -270,7 +270,9 @@ Src::Application.routes.draw do
     end
   end
 
-  resources :errata, :only => [:show] do
+  errata_only = [:show]
+  errata_only << [:index] if !Katello.config.katello?
+  resources :errata, :only => errata_only do
     member do
       get :packages
       get :short_details

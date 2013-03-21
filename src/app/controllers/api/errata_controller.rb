@@ -42,11 +42,15 @@ class Api::ErrataController < Api::ApiController
   param :severity, String, :desc => "Severity of errata. Usually one of: Critical, Important, Moderate, Low. Case insensitive."
   param :type, String, :desc => "Type of errata. Usually one of: security, bugfix, enhancement. Case insensitive."
   def index
-    filter = params.slice(:repoid, :product_id, :environment_id, :type, :severity).symbolize_keys
-    unless filter[:repoid] or filter[:environment_id]
-      raise HttpErrors::BadRequest.new(_("Repo ID or environment must be provided"))
+    if Katello.config.katello?
+      filter = params.slice(:repoid, :product_id, :environment_id, :type, :severity).symbolize_keys
+      unless filter[:repoid] or filter[:environment_id]
+        raise HttpErrors::BadRequest.new(_("Repo ID or environment must be provided"))
+      end
+      render :json => Errata.filter(filter)
+    else
+      render :json => UpstreamErrata.all
     end
-    render :json => Errata.filter(filter)
   end
 
   api :GET, "/repositories/:repository_id/errata/:id", "Show an erratum"
