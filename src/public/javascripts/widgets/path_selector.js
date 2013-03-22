@@ -109,7 +109,7 @@ KT.path_select = function(div_id, name, environments, options_in){
                 return false;
             }
             //This is a hack for IE, sadly
-            
+
             path_selector.css('visibility', 'hidden');
             path_selector.show();
 
@@ -298,8 +298,8 @@ KT.path_select_template = {
         if(cancel_button_text){
             html += KT.path_select_template.button("KT_path_select_cancel_button", cancel_button_text);
         }
-        html += '</form>'
-        
+        html += '</form>';
+
         if( footer ){
             html += KT.path_select_template.footer(footer);
         }

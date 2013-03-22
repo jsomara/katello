@@ -24,7 +24,7 @@ class Api::ErrataController < Api::ApiController
   before_filter :authorize
 
   def rules
-    env_readable = lambda{ @environment.contents_readable? }
+    env_readable = lambda{ !Katello.config.katello? || @environment.contents_readable? }
     readable = lambda{ @repo.environment.contents_readable? and @repo.product.readable? }
     {
       :index => env_readable,
@@ -49,7 +49,7 @@ class Api::ErrataController < Api::ApiController
       end
       render :json => Errata.filter(filter)
     else
-      render :json => UpstreamErrata.all
+      render :json => upstream_index
     end
   end
 
@@ -60,14 +60,59 @@ class Api::ErrataController < Api::ApiController
 
   private
 
+  def upstream_index
+    sort_order    = params[:sort_order] if params[:sort_order]
+    sort_by       = params[:sort_by] if params[:sort_by]
+    query_string  = params[:name] ? "name:#{params[:name]}" : params[:search]
+    filters       = []
+
+    # TODO: elasticsearch impl
+    # filters << readable_filters
+    # filters << { :uuid => System.all_by_pool_uuid(params['pool_id']) } if params['pool_id']
+
+    options = {
+      :filter         => filters,
+      :load_records?  => true
+    }
+
+    if params[:paged]
+      options[:page_size] = params[:page_size] || current_user.page_size
+    end
+
+    options[:sort_by]   = params[:sort_by]    if params[:sort_by]
+    options[:sort_order]= params[:sort_order] if params[:sort_order]
+
+    # TODO : elasticsearch impl
+    # items = Glue::ElasticSearch::Items.new(System)
+    # systems, total_count = items.retrieve(query_string, params[:offset], options)
+    erratum = UpstreamErrata.all
+    total_count = erratum.size
+
+    if params[:paged]
+      erratum = {
+        :erratum  => erratum,
+        :subtotal => total_count,
+        :total    => total_count
+      }
+    end
+
+    render :json => erratum.to_json
+  end
+
   def find_environment
     if params.has_key?(:environment_id)
       @environment = KTEnvironment.find(params[:environment_id])
       raise HttpErrors::NotFound, _("Couldn't find environment '%s'") % params[:environment_id] if @environment.nil?
-    elsif params.has_key?(:repoid)
-      @repo = Repository.find(params[:repoid])
-      raise HttpErrors::NotFound, _("Couldn't find repository '%s'") % params[:repoid] if @repo.nil?
-      @environment = @repo.environment
+    else
+      if Katello.config.katello?
+        if params.has_key?(:repoid)
+          @repo = Repository.find(params[:repoid])
+          raise HttpErrors::NotFound, _("Couldn't find repository '%s'") % params[:repoid] if @repo.nil?
+          @environment = @repo.environment
+        end
+      else
+        @environment = current_user.default_environment
+      end
     end
     @environment
   end

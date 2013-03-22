@@ -70,6 +70,11 @@ javascripts:
     - public/javascripts/gpg_key_edit.js
   hardware_model:
     - public/javascripts/hardware_model.js
+  errata:
+    - public/javascripts/bower/angular/angular.js
+    - public/javascripts/bower/alchemy/alchemy.js
+    - public/javascripts/bower/alchemy-tables/alchemy-tables.js
+    - public/javascripts/errata/errata.controller.js
   content:
     - public/javascripts/vendor/jquery/plugins/jquery.treeTable.js
     - public/javascripts/content.js

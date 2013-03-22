@@ -1,6 +1,6 @@
 'use strict';
 
-var Katello = angular.module('Katello', ['alchemy', 'alch-templates', 'ngResource']);
+var Katello = angular.module('Katello', ['alchemy', 'alch-templates']);
 
 Katello.config(['$httpProvider', function($httpProvider){
     $httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
@@ -10,7 +10,7 @@ angular.module('Katello').factory('ErrataTable', ['$location', '$http', function
     var ErrataTable = {};
 
     ErrataTable.get = function(sort, callback){
-        return $http.get('/katello/api/errata/', {
+        return $http.get('api/errata/', {
             params : {
                 'organization_id' : 'ACME_Corporation',
                 'search' : $location.search().search,
@@ -35,13 +35,13 @@ angular.module('Katello').factory('ErrataTable', ['$location', '$http', function
                     'show'  : true,
                     'cells': [{
                         display: errata.errata_id,
-                        column_id: 'Errata ID'
+                        column_id: 'errata_id'
                     },{
                         display: errata.title,
-                        column_id: 'Title'
+                        column_id: 'title'
                     },{
-                        display: (errata.severity == nil || errata.severity.blank?) "Minor" : errata.severity,
-                        column_id: 'Severity'
+                        display: errata.severity,
+                        column_id: 'severity'
                     }]
                 };
                 table_data.rows.push(row);
