@@ -1,5 +1,7 @@
 class UpstreamErrata < ActiveRecord::Base
 
+  include Glue::ElasticSearch::Errata if Katello.config.use_elasticsearch
+
   def update_or_save
     old = old_erratum
     if old == nil
@@ -7,6 +9,14 @@ class UpstreamErrata < ActiveRecord::Base
     elsif old.updated < updated
       update_errata(old)
     end
+  end
+
+  def repoids
+    ""
+  end
+
+  def product_ids
+    []
   end
 
   def old_erratum

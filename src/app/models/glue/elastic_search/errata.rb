@@ -145,6 +145,17 @@ module Glue::ElasticSearch::Errata
           import errata
         end if !errata.empty?
       end
+
+      def self.index_all_errata
+        errata = self.all.collect{ |erratum|
+          erratum.as_json.merge(erratum.index_options)
+        }
+
+        Tire.index Errata.index do
+          create :settings => Errata.index_settings, :mappings => Errata.index_mapping
+          import errata
+        end if !errata.empty?
+      end
     end
   end
 end

@@ -2,6 +2,7 @@ task :reindex=>["environment", "clear_search_indices"]  do
   User.current = User.first #set a user for orchestration
 
   ignore_list = ["CpConsumerUser", "PulpSyncStatus", "PulpTaskStatus", "Hypervisor", "Pool"]
+  ignore_list << "UpstreamErrata" if Katello.config.katello? # upstream errata is exclusive to headpin
 
   Dir.glob(RAILS_ROOT + '/app/models/*.rb').each { |file| require file }
   models = ActiveRecord::Base.subclasses.sort{|a,b| a.name <=> b.name}
@@ -11,7 +12,6 @@ task :reindex=>["environment", "clear_search_indices"]  do
        mod.index.import(mod.all) if mod.count > 0
     end
   }
-
 
   print "Re-indexing Repositories\n"
 
@@ -33,4 +33,6 @@ task :reindex=>["environment", "clear_search_indices"]  do
     ::Pool.index_pools(pools) if pools.length > 0
   end
 
+  print "Re-indexing upstream errata\n"
+  UpstreamErrata.index_all_errata
 end

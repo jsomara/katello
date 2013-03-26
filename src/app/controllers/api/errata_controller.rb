@@ -66,9 +66,9 @@ class Api::ErrataController < Api::ApiController
     query_string  = params[:name] ? "name:#{params[:name]}" : params[:search]
     filters       = []
 
-    # TODO: elasticsearch impl
-    # filters << readable_filters
-    # filters << { :uuid => System.all_by_pool_uuid(params['pool_id']) } if params['pool_id']
+    if params[:engproduct_id]
+      filters << { :engproduct_id => params[:engproduct_id].split(',') }
+    end
 
     options = {
       :filter         => filters,
@@ -82,17 +82,21 @@ class Api::ErrataController < Api::ApiController
     options[:sort_by]   = params[:sort_by]    if params[:sort_by]
     options[:sort_order]= params[:sort_order] if params[:sort_order]
 
-    # TODO : elasticsearch impl
-    # items = Glue::ElasticSearch::Items.new(System)
-    # systems, total_count = items.retrieve(query_string, params[:offset], options)
-    erratum = UpstreamErrata.all
+    Rails.logger.debug "options offsent : #{params[:offset]}"
+    Rails.logger.debug "options pagesize : #{options[:page_size]}"
+    Rails.logger.debug "paramssearch : #{params[:search]}"
+    Rails.logger.debug "querystring : #{query_string}"
+
+    items = Glue::ElasticSearch::Items.new(UpstreamErrata)
+    erratum, total_count = items.retrieve(query_string, params[:offset], options)
+
     total_count = erratum.size
 
     if params[:paged]
       erratum = {
         :erratum  => erratum,
         :subtotal => total_count,
-        :total    => total_count
+        :total    => items.total_items
       }
     end
 
