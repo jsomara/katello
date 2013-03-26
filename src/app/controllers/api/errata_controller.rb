@@ -64,32 +64,12 @@ class Api::ErrataController < Api::ApiController
     sort_order    = params[:sort_order] if params[:sort_order]
     sort_by       = params[:sort_by] if params[:sort_by]
     query_string  = params[:name] ? "name:#{params[:name]}" : params[:search]
-    filters       = []
-
-    if params[:engproduct_id]
-      filters << { :engproduct_id => params[:engproduct_id].split(',') }
-    end
-
-    options = {
-      :filter         => filters,
-      :load_records?  => true
-    }
 
     if params[:paged]
-      options[:page_size] = params[:page_size] || current_user.page_size
+      page_size = params[:page_size] || current_user.page_size || 10
     end
 
-    options[:sort_by]   = params[:sort_by]    if params[:sort_by]
-    options[:sort_order]= params[:sort_order] if params[:sort_order]
-
-    Rails.logger.debug "options offsent : #{params[:offset]}"
-    Rails.logger.debug "options pagesize : #{options[:page_size]}"
-    Rails.logger.debug "paramssearch : #{params[:search]}"
-    Rails.logger.debug "querystring : #{query_string}"
-
-    items = Glue::ElasticSearch::Items.new(UpstreamErrata)
-    erratum, total_count = items.retrieve(query_string, params[:offset], options)
-
+    erratum = UpstreamErrata.search(query_string,params[:offset], page_size)
     total_count = erratum.size
 
     if params[:paged]
@@ -100,7 +80,7 @@ class Api::ErrataController < Api::ApiController
       }
     end
 
-    render :json => erratum.to_json
+    return erratum.to_json
   end
 
   def find_environment
