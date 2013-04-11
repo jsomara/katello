@@ -23,7 +23,7 @@ class LdapValidatorTest < MiniTest::Rails::ActiveSupport::TestCase
     end
 
   def self.before_suite
-    services  = ['Candlepin',, 'ElasticSearch']
+    services  = ['Candlepin', 'ElasticSearch']
     models    = ['User', 'Organization', 'LdapGroupRole']
     disable_glue_layers(services, models)
   end
@@ -36,6 +36,7 @@ class LdapValidatorTest < MiniTest::Rails::ActiveSupport::TestCase
   end
 
   def test_valid_login
+    assert true
   end
 end
 
